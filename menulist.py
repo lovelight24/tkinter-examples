@@ -21,11 +21,22 @@ class form:
 
 		self.menu2.add_cascade(label='File', menu=new_item)
 
-		root.config(menu=self.menu2)	
+		root.config(menu=self.menu2)
+
+		# Create Canvas
+		C = Canvas(root, bg="blue", height=250, width=300)
+		C.pack(expand=True, fill=BOTH)
+
+		# Add Background Image in Canvas
+		mainbgimg = PhotoImage(file = "images\\main-bg.gif", width=300, height=250)
+		C.img = mainbgimg
+		C.create_image(0,0, anchor=NW, image=mainbgimg) 
+		
+		
 
 
 	def show_entry_value(self):
-#		print(self.texte1.get())
+		print(self.texte1.get())
 #		print("name is %s and mobile is %s" %(self.texte1.get(), self.texte2.get()))		
 
 
