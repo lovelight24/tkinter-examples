@@ -1,6 +1,8 @@
 from tkinter import *
 from tkinter.filedialog import askopenfilename
 from pathlib import Path
+import PIL
+from PIL import Image, ImageTk
 
 class form:
 	def __init__(self, root):
@@ -28,10 +30,14 @@ class form:
 		C.pack(expand=True, fill=BOTH)
 
 		# Add Background Image in Canvas
-		mainbgimg = PhotoImage(file = "images\\main-bg.gif", width=300, height=250)
+#		mainbgimg = PhotoImage(file = "images\\main-bg.gif")
+		mainbgimg = Image.open("images\\main-bg.jpg")
+		mainbgimg = mainbgimg.resize((300,250), PIL.Image.ANTIALIAS)
+		w,h = mainbgimg.size
+		mainbgimg = ImageTk.PhotoImage(mainbgimg)
 		C.img = mainbgimg
 		C.create_image(0,0, anchor=NW, image=mainbgimg) 
-		
+		root.geometry(("%dx%d")%(w,h))		
 		
 
 
